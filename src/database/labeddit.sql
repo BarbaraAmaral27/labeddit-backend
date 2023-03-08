@@ -82,3 +82,5 @@ CREATE TABLE likes_dislikes_comments (
     ON UPDATE CASCADE,
   UNIQUE (user_id, comment_id, post_id)
 );
+
+SELECT * FROM comments;
