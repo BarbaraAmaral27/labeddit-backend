@@ -5,7 +5,7 @@ export abstract class BaseDatabase {
     client: "sqlite3",
     connection: {
       filename:
-        "./src/database/labook.db" /* mude para o nome do arquivo .db criado */,
+        "./src/database/labeddit.db" /* mude para o nome do arquivo .db criado */,
     },
     useNullAsDefault: true,
     pool: {
