@@ -58,7 +58,7 @@ export class PostController {
           content: req.body.content,
           token: req.headers.authorization as string
         }
-       
+      
         await this.postBusiness.editPost(input)
     
         res.status(200).end()        

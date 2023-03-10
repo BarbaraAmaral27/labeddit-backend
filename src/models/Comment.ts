@@ -1,8 +1,7 @@
 import { CommentDB, CommentModel } from "../types";
 
 export class Comment {
-
-  constructor(
+    constructor(
     private id: string,
     private postId: string,
     private content: string,    
@@ -10,11 +9,10 @@ export class Comment {
     private dislikes: number,
     private createdAt: string,
     private updatedAt: string,
-    private creator: {
-      id: string;
-      name: string;
-    }
+    private creatorId: string,
+    private creatorName: string
   ) {}
+
   public getId(): string {
     return this.id
 }
@@ -87,24 +85,25 @@ public setUpdatedAt(value: string): void {
     this.updatedAt = value
 }
 
-public getCreator(): {
-  id: string;
-  name: string;
-} {
-  return this.creator;
-}
-public setCreator(value: {
-  id: string;
-  name: string;
-}) {
-  this.creator = value;
-}
+public getCreatorName(): string {
+    return this.creatorName;
+  }
+  public setCreatorName(value: string): void {
+    this.creatorName = value;
+  }
+  public getCreatorId(): string {
+    return this.creatorId;
+  }
+  public setCreatorId(value: string): void {
+    this.creatorId = value;
+  }
+
 
 
   public toDBModel(): CommentDB {
     return {
       id: this.id,
-      creator_id: this.creator.id,
+      creator_id: this.creatorId,
       content: this.content,
       post_id: this.postId,
       likes: this.likes,
@@ -123,10 +122,8 @@ public setCreator(value: {
       dislikes: this.dislikes,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
-      creator: {
-        id: this.creator.id,
-        name: this.creator.name,
-      },
-    };
+      creatorId: this.creatorId,
+      creatorName: this.creatorName    
+    }
   }
 }
