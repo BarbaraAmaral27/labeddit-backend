@@ -52,4 +52,50 @@ export class CommentController {
       }
     }
   }
+
+  public deleteComment = async (req: Request, res: Response) => {
+    try {
+      const input = {
+        commentId: req.params.id,
+        token: req.headers.authorization
+      }
+
+      const output = await this.commentBusiness.deleteComment(input)
+
+      res.status(200).send(output)
+      
+    } catch (error) {
+      console.log(error)
+
+      if (error instanceof BaseError) {
+        res.status(error.statusCode).send(error.message)
+      } else {
+        res.status(500).send("Erro inesperado")
+    }
+  }
+}
+
+public likeOrDislikeComment = async (req: Request, res: Response) => {
+  try {
+    const input = {
+      idToLikeOrDislike: req.params.id,
+      token: req.headers.authorization,
+      like: req.body.like
+    }
+
+    const output = await this.commentBusiness.likeOrDislikeComment(input)
+
+    res.status(200).send(output)
+    
+  } catch (error) {
+    console.log(error)
+
+    if (error instanceof BaseError) {
+      res.status(error.statusCode).send(error.message)
+    } else {
+      res.status(500).send("Erro inesperado")
+    }
+  }
+}
+
 }

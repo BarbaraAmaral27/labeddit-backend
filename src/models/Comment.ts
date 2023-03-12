@@ -98,8 +98,6 @@ public getCreatorName(): string {
     this.creatorId = value;
   }
 
-
-
   public toDBModel(): CommentDB {
     return {
       id: this.id,
