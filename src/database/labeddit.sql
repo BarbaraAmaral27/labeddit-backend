@@ -10,10 +10,10 @@ CREATE TABLE users(
 
 INSERT INTO users (id, name, email, password, role)
 VALUES
-        ("u001", "Aline", "aline@labenu.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "author"),
-        ("u002", "Binho", "binho@gmail.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "author"),
-        ("u003", "Evandro", "evandro@gmail.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "author"),
-        ("u004", "Paula", "paula@labenu.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "admin");
+        ("u001", "Aline", "aline@labenu.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "ADMIN"),
+        ("u002", "Binho", "binho@gmail.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "NORMAL"),
+        ("u003", "Evandro", "evandro@gmail.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "NORMAL"),
+        ("u004", "Paula", "paula@labenu.com", "$2a$12$CIHI6habJCFvlzVeoKpZq.k2DVqfaBYVewqlDgHcLPUROCkaRkPcq", "NORMAL");
 
 SELECT * FROM users;
 
@@ -65,6 +65,12 @@ CREATE TABLE comments (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
+INSERT INTO comments(id, creator_id, post_id, content)
+VALUES  ("c001", "u001", "p002", "Dia lindo!!!"),
+        ("c002", "u002", "p003", "Chuvaa boa!!!"),
+        ("c003", "u003", "p004", "Sextoou!!!"),
+        ("c004", "u004", "p001", "Bora!!!");
 
 CREATE TABLE likes_dislikes_comments (
   user_id TEXT NOT NULL,
